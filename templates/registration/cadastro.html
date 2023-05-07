@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+{% if form.errors %}
+<p class="w-100 text-center pt-5 mb-0 text-uppercase fw-bold fs-5 text-danger">Nome de usuário senha não coincidem. Por favor, ente novamente.</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p class="w-100 text-center pt-5 mb-0 text-uppercase fw-bold fs-5 text-danger">Suas credenciais não permitem acesso a essa página./p>
+{% else %}
+<p class="w-100 text-center pt-5 mb-0 text-uppercase fw-bold fs-5 text-danger">Faça login para ver essa página</p>
+{% endif %}
+{% endif %}
+
+<section class>
+  <div class="container py-5 h-70">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <H1>Cadastre-se</H1>
+                <form method="post" novalidate>
+                  {% csrf_token %}
+                    {% for field in form %}
+                        <p style="  display: flex;
+                                    flex-direction: column;">
+                            {% if field.errors %}
+                            <ul class="">
+                                {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                                {% endfor %}
+                            </ul>
+                            {% endif %}
+                                {{ field.label_tag }} <br>
+                            {{ field }}
+                        </p>
+                    {% endfor %}
+                  <div class="pb-4 gap-3">
+
+                    <button type="submit" class="btn btn-outline-danger w-100">Criar nova conta</button>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h1 class="mb-4">Bem vindo</h1>
+                <p class="small mb-0">
+                  Uma loja de aluguel de roupas online seria um negócio que oferece aos seus clientes a oportunidade de
+                  alugar roupas para ocasiões especiais ou para uso cotidiano. Os clientes poderiam acessar o site da
+                  loja para escolher entre uma variedade de estilos e tamanhos de roupas, incluindo vestidos de gala,
+                  ternos, blazers, saias, blusas e acessórios.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -1,0 +1,25 @@
+<div class="col-lg-12">
+  <!-- <span>Who What Wear</span> -->
+  <p class="m-0 p-0 title-h1">RESUMO DO PEDIDO</p>
+</div>
+<div class="col-lg-12">
+  <h1 class="m-0 p-0 price-pro">R$ {{carrinho_preco}}</h1>
+    <p>
+        <small>não somado {{carrinho_lavagem}} reais de lavagem</small>
+    </p>
+</div>
+<div class="col-lg-12 mt-3">
+    {% if carrinho_cheio %}
+        <div class="row">
+            <div class>
+              <a href="{% url 'entrega' %}" class="btn btn-danger w-100 btn-add-to-cart border-0 py-3"> CONTINUAR </a>
+            </div>
+        </div>
+    {% else %}
+        <div class="row">
+            <div class>
+              <a href="#" class="btn w-100 btn-add-to-cart border-0 py-3"> ADICIONE ITEMS ANTES DE CONINUAR </a>
+            </div>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,76 @@
+{% extends 'base.html' %} {% block title %}Produtos{% endblock %} {% block content %} {% load static %}
+<main class="container d-flex justify-content-center align-items-center py-0">
+  <div class="col-lg-12 border p-3 main-section bg-white border-0">
+    <div class="row py-5">
+      <h1 class="m-0 p-0 title-h1">MEU CARRINHO</h1>
+    </div>
+    <div class="row m-0">
+      <div class="col-lg-5 left-side-product-box pb-3 x">
+        <div class="right-side-pro-detail border p-4 m-0">
+          <div class="row"
+               hx-trigger="revealed"
+               hx-get="{% url 'carrinho_cards' %}"
+          >
+                <div class="card mb-3" style="max-width: 540px">
+                  <div class="row g-0">
+                    <div class="col-md-5">
+                      <img
+                        src="{% static 'img/loader.svg' %}"
+                        style="max-width: 100%; height: 100%; object-fit: none"
+                        class="rounded-start col-md-4"
+                        alt="{{item.roupa.nome}}"
+                      />
+                    </div>
+                    <div class="col-md-7 d-flex justify-content-center align-items-center">
+                      <div class="card-body d-flex flex-column h-100 justify-content-evenly">
+                        <h5 class="card-title">Carregando...</h5>
+                        <p class="m-0">Carregando...</p>
+                        <div class="col-lg-12">
+                          <h1 class="m-0 p-0 price-pro">R$ 00,00</h1>
+                            <p><small>Carregando preco de lavagem</small></p>
+                        </div>
+                        <a
+                          href=""
+                          class="btn btn-secondary cart col-12"
+                          role="button"
+                          aria-disabled="true"
+                          style="color: black"
+                          ><i class="bi bi-trash3"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 d-flex align-items-start">
+        <div class="right-side-pro-detail border p-3 m-0 border">
+          <div class="row"
+               hx-trigger="revealed"
+               hx-get="{% url 'carrinho_info' %}"
+          >
+            <div class="col-lg-12">
+              <!-- <span>Who What Wear</span> -->
+              <p class="m-0 p-0 title-h1">RESUMO DO PEDIDO</p>
+            </div>
+            <div class="col-lg-12">
+              <h1 class="m-0 p-0 price-pro">R$ 0000</h1>
+                <p>
+                    <small>carregando informações de lavagem</small>
+                </p>
+            </div>
+            <div class="col-lg-12 mt-3">
+                <div class="row">
+                <div class>
+                  <a href="#" class="btn w-100 btn-add-to-cart border-0 py-3"> ...... </a>
+                </div>
+            </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}

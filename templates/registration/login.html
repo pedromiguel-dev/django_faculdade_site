@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Login{% endblock %}
+{% block content %}
+
+{% if form.errors %}
+<p class="w-100 text-center pt-5 mb-0 text-uppercase fw-bold fs-5 text-danger">Nome de usuário senha não coincidem. Por favor, ente novamente.</p>
+{% endif %}
+
+{% if next %}
+{% if user.is_authenticated %}
+<p class="w-100 text-center pt-5 mb-0 text-uppercase fw-bold fs-5 text-danger">Suas credenciais não permitem acesso a essa página./p>
+{% else %}
+<p class="w-100 text-center pt-5 mb-0 text-uppercase fw-bold fs-5 text-danger">Faça login para ver essa página</p>
+{% endif %}
+{% endif %}
+
+<section class>
+  <div class="container py-5 h-70">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
+                <H1>Entrar</H1>
+                <form method="post" action="{% url 'login' %}">
+                  {% csrf_token %}
+
+                    <div class="form-group mb-3">
+                        <label class="form-label">
+                            {{ form.username.label_tag }}
+                        </label>
+                        {{ form.username.erros }}
+                        {% render_field form.username class="form-control" %}
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label">
+                            {{ form.password.label_tag }}
+                        </label>
+                        {{ form.password.erros }}
+                        {% render_field form.password class="form-control" %}
+                    </div>
+                  <div class="text-center pt-1 mb-1 pb-1">
+                    <input type="submit" value="login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-0 w-100" />
+                  </div>
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <a href="{% url 'signup' %}" class="btn btn-outline-danger w-100">Crie nova conta</a>
+                  </div>
+                    <div class="d-flex align-items-center justify-content-center  w-100">
+                        <a class="text-muted" href="{% url 'password_reset' %}">Esqueceu a senha?</a>
+                    </div>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h1 class="mb-4">Bem vindo</h1>
+                <p class="small mb-0">
+                  Uma loja de aluguel de roupas online seria um negócio que oferece aos seus clientes a oportunidade de
+                  alugar roupas para ocasiões especiais ou para uso cotidiano. Os clientes poderiam acessar o site da
+                  loja para escolher entre uma variedade de estilos e tamanhos de roupas, incluindo vestidos de gala,
+                  ternos, blazers, saias, blusas e acessórios.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <form method="post" action="{% url 'login' %}">
+  {% csrf_token %}
+  <table>
+    <tr>
+      <td>{{ form.username.label_tag }}</td>
+      <td>{{ form.username }}</td>
+    </tr>
+    <tr>
+      <td>{{ form.password.label_tag }}</td>
+      <td>{{ form.password }}</td>
+    </tr>
+  </table>
+  <input type="submit" value="login" />
+  <input type="hidden" name="next" value="{{ next }}" />
+</form>
+
+{# Assumes you setup the password_reset view in your URLconf #}
+<p><a href="{% url 'password_reset' %}">Lost password?</a></p> -->
+
+{% endblock %}

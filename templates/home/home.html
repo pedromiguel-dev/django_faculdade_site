@@ -1,0 +1,160 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    {% load static %}
+    <main class="container-fluid d-flex justify-content-center align-items-center homepagebanner">
+        <img src="{% static 'img/banner.png' %}" class="img-fluid" alt="Bem vindo"/>
+    </main>
+    <section class="container-fluid  p-3 py-5">
+        <div class="container-fluid d-inline-flex justify-content-between align-items-center py-5">
+            <div>
+                <div>
+                    <h1 class="title-h1">PROCURE O LOOK PERFEITO PARA OCASIÃO</h1>
+                    <p class="section-p">para quem sabe que merece o melhor</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid py-2 scroll"
+             hx-trigger="revealed"
+             hx-get="{% url 'categoria_card' %}"
+             hx-target="#search-results"
+             placeholder="Buscando"
+
+        >
+            <div class="row  flex-row flex-nowrap gap-5" id="search-results">
+                <div class="card card-block" style="width: 20rem;"  >
+                    <img src="{% static 'img/loader.svg' %}" class="card-img-top"
+                         style="max-width: 100%; max-height: 55%; object-fit: none" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome</h5>
+                        <p class="card-text">Carregando....</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" class="btn btn btn btn-danger w-100">Carregando....</a>
+                    </div>
+                </div>
+                <div class="card card-block" style="width: 20rem;"  >
+                    <img src="{% static 'img/loader.svg' %}" class="card-img-top"
+                         style="max-width: 100%; max-height: 55%; object-fit: none" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome</h5>
+                        <p class="card-text">Carregando....</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" class="btn btn btn btn-danger w-100">Carregando....</a>
+                    </div>
+                </div>
+                <div class="card card-block" style="width: 20rem;"  >
+                    <img src="{% static 'img/loader.svg' %}" class="card-img-top"
+                         style="max-width: 100%; max-height: 55%; object-fit: none" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome</h5>
+                        <p class="card-text">Carregando....</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" class="btn btn btn btn-danger w-100">Carregando....</a>
+                    </div>
+                </div>
+                <div class="card card-block" style="width: 20rem;"  >
+                    <img src="{% static 'img/loader.svg' %}" class="card-img-top"
+                         style="max-width: 100%; max-height: 55%; object-fit: none" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome</h5>
+                        <p class="card-text">Carregando....</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" class="btn btn btn btn-danger w-100">Carregando....</a>
+                    </div>
+                </div>
+                <div class="card card-block" style="width: 20rem;"  >
+                    <img src="{% static 'img/loader.svg' %}" class="card-img-top"
+                         style="max-width: 100%; max-height: 55%; object-fit: none" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Nome</h5>
+                        <p class="card-text">Carregando....</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="" class="btn btn btn btn-danger w-100">Carregando....</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section style="background-color: #9C2A43; padding: 3.875rem 0;"
+             class="container-fluid d-inline-flex flex-column justify-content-center p-3 py-5">
+        <div class="py-5">
+            <div>
+                <h1 class="title-h1-c">NOSSA EQUIPE SEMPRE FAZENDO O MELHOR PARA VOCÊ</h1>
+                <p class="section-pc">Este é um trabalho da discplina de desenvolvimento em python na Estácio</p>
+            </div>
+        </div>
+        <div class="container-fluid py-2 scroll" id="sobrenos">
+            <div class="row  flex-row flex-nowrap gap-5">
+                <div class="card mb-3 card-block" style="max-width: 540px; height: fit-content;">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="{% static 'grupinho/isac.jpg' %}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Isaac Sousa</h5>
+                                <p class="card-text">Programador fullstack no projeto. Stack principal backend,
+                                    responsável pelo back e base de projeto.</p>
+                                <p class="card-text"><small class="text-body-secondary">Fullstack developer.</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 card-block" style="max-width: 540px; height: fit-content;">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="{% static 'grupinho/lili.jpg' %}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Maria liliane</h5>
+                                <p class="card-text">Administradora do grupo, administradora de banco de dados e scrum
+                                    master.</p>
+                                <p class="card-text"><small class="text-body-secondary">Scrum master, líder.</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 card-block" style="max-width: 540px; height: fit-content;">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="{% static 'grupinho/mig.jpg' %}" class="img-fluid rounded-start" alt="...">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Pedro Miguel</h5>
+                                <p class="card-text">Programador fullstack no projeto. Stack principal front-end,
+                                    responsável pelo design e princípios.</p>
+                                <p class="card-text"><small class="text-body-secondary">Fullstack developer. Designer
+                                    UI/UX.</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card mb-3 card-block" style="max-width: 540px; height: fit-content;">
+                    <div class="row g-0">
+                        <div class="col-md-5">
+                            <img src="{% static 'grupinho/geiza.jpg' %}" class="img-fluid rounded-start" alt="..."
+                                 style="max-width: 100%; height: 100%; object-fit: cover">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">Geiza Franklin</h5>
+                                <p class="card-text">Tester QA do grupo, administradora de banco de dados.</p>
+                                <p class="card-text"><small class="text-body-secondary">QA, tester, banco de
+                                    dados</small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

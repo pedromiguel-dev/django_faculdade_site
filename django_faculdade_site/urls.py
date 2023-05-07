@@ -15,8 +15,27 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.urls import path, include
+from django_faculdade_site.apps.home.views import home
+from django_faculdade_site.apps.roupa.views import roupa
+from django_faculdade_site.apps.categoria.views import categoria, categorias_cards
+from django_faculdade_site.apps.entrega.views import agradecimento
+from django_faculdade_site.apps.perfil.views import perfil
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path(route="admin/", view=admin.site.urls),
+    path(route="accounts/", view=include("django.contrib.auth.urls")),
+    path(route="accounts/profile/", view=perfil, name="perfil"),
+    path(route="accounts/", view=include("django_faculdade_site.apps.accounts.urls")),
+    path(route="carrinho/", view=include("django_faculdade_site.apps.carrinho.urls")),
+    path(route="entrega/", view=include("django_faculdade_site.apps.entrega.urls")),
+    path(route="produto/<id_roupa>/", view=roupa, name="roupa"),
+    path(route="categoria/", view=include("django_faculdade_site.apps.categoria.urls")),
+    path(route="agradecimento/", view=agradecimento),
+    path(route="", view=home),
 ]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

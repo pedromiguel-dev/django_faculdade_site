@@ -1,0 +1,17 @@
+{% if categorias %}
+{% for categoria in categorias %}
+    <div class="card card-block" style="width: 20rem;" id="{{ categoria.id }}">
+        <div class="card-img-top" style="height: 45%">
+            <img src="/media/{{ categoria.imagem }}"
+             style="width: 100%; height: 100%; object-fit: cover" alt="...">
+        </div>
+        <div class="card-body h-auto">
+            <h5 class="card-title">{{ categoria.nome }}</h5>
+            <p class="card-text">{{ categoria.descricao }}</p>
+        </div>
+        <div class="card-footer">
+            <a href="{% url 'categoria' categoria.id %}" class="btn btn btn btn-danger w-100">Ver mais</a>
+        </div>
+    </div>
+{% endfor %}
+{% endif %}

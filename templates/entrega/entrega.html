@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title %}Produtos{% endblock %}
+{% block content %}
+{% load static %}
+<main class="container d-flex justify-content-center align-items-center py-0">
+    <div class="col-lg-12 border p-3 main-section bg-white  border-0">
+        <div class="py-5">
+            <h1 class="m-0 p-0 title-h1">ENTREGA</h1>
+        </div>
+        <div class="row m-0">
+            <div class="col-lg-5 left-side-product-box">
+                <div class="right-side-pro-detail border p-0 m-0 border-0">
+                    <div class="">
+                        <h4 class="p-0">Retirada</h4>
+                        <div class="card mb-3 p-2" >
+                            <p class="text-start m-0">A retirada de aluguéis é feita na Faculdade Estácio campus
+                                parangaba.
+                            </p>
+                        </div>
+                        <h4 class="p-0">Devolução</h4>
+                        <div class="card mb-3 p-2" >
+                            <p class="text-start m-0">
+                                A devolução é por sua conta sendo feita de segunda a sexta 12h às 19h e sábado das 10h às
+                                14h na faculdade Estácio campus parangaba.<br><br>
+
+                                1 peça precisará ser retornada daqui a 10 dias.<br><br>
+
+                                * Lembrando que é cobrado multa de R$20,00 por dia de atraso na devolução da(s) peça(s)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7 d-flex align-items-start">
+                <div class="right-side-pro-detail border p-3 m-0 border "
+                     hx-get="{% url 'entrega_info' %}"
+                     hx-trigger="load"
+                     hx-target="#entrega_info"
+                >
+                    <form class="row" method="get" action="{% url 'registrar_entrega' %}"
+
+                    >
+                        <div id="entrega_info">
+                            <div class="col-lg-12">
+                                <p class="m-0 p-0 title-h1">CALCULANDO PEDIDO</p>
+                            </div>
+                            <div class="col-lg-12">
+                               <h1 class="m-0 p-0 price-pro">R$ 0000</h1>
+                            </div>
+                        </div>
+                        <div class="col-lg-12 mb-3">
+                           <label for="numero_telefone" class="form-label">Numero de telefone</label>
+                            <input type="tel" class="form-control" id="numero_telefone" name="numero_telefone" aria-describedby="phoneNumber" required aria-required="true">
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="row">
+                                <div class>
+                                    <button type="submit" class="btn btn-danger w-100 btn-add-to-cart border-0 py-3">
+                                        PAGAR COM A SUA VIDA
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}
