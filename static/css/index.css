@@ -31,6 +31,35 @@
     --bs-btn-hover-bg: var(--secondart-h);
 }
 
+.btn-secondary.gear {
+    --primary-color: #FF7392;
+    --primary-color-h: #e75776;
+    --secondary: #d0d0d0;
+    --secondart-h: #b6b6b6;
+
+
+    --bs-btn-color: white;
+    --bs-btn-bg: var(--secondary);
+    --bs-btn-border-color: var(--secondary);
+    --bs-btn-hover-color: var(--secondart-h);
+    --bs-btn-hover-bg: var(--secondart-h);
+    color: white;
+}
+
+.btn-secondary.add_user {
+    --primary-color: #FF7392;
+    --primary-color-h: #e75776;
+    --secondary: #99d0ea;
+    --secondart-h: #73b2ce;
+
+
+    --bs-btn-color: white;
+    --bs-btn-bg: var(--secondary);
+    --bs-btn-border-color: var(--secondary);
+    --bs-btn-hover-color: var(--secondart-h);
+    --bs-btn-hover-bg: var(--secondart-h);
+}
+
 .homepagebanner {
     margin-block: 48px;
 }

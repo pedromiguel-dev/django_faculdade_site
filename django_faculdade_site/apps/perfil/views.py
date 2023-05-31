@@ -1,8 +1,7 @@
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
 from django.shortcuts import render
 
-from django_faculdade_site.apps.cad_roupas.models import Pedido
+from django_faculdade_site.apps.cad_roupas.models import Pedido, User
 
 
 # Create your views here.
@@ -12,6 +11,8 @@ def perfil(req):
     perfil_user_email = req.user.email
     perfil_user_name = User.get_username(req.user)
     pedidos = Pedido.objects.select_related().filter(usuario=req.user)
+    user_role = req.user.role
+
     pedidos_pagos = []
 
     for pedido in pedidos:
@@ -26,6 +27,7 @@ def perfil(req):
             "email": perfil_user_email,
             "name": perfil_user_name,
             "image": "cat-img.png",
-            "pedidos_pagos": pedidos_pagos
+            "pedidos_pagos": pedidos_pagos,
+            "role": user_role
         }
     )

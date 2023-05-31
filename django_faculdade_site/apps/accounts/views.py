@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 
 
 def sign_up(req):
@@ -20,3 +20,9 @@ def sign_up(req):
             return redirect('/')
         else:
             return render(req, 'registration/cadastro.html', {'form': form})
+
+
+def sign_in(req):
+    if req.method == 'GET':
+        form = LoginForm()
+        return render(req, 'registration/login.html', {'form': form})

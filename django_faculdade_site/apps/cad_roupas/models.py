@@ -1,5 +1,5 @@
 from datetime import datetime, timedelta
-from django.contrib.auth.models import User
+from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 
 
@@ -7,13 +7,49 @@ def utc_ten_days_future():
     return datetime.utcnow() + timedelta(days=10)
 
 
-class Cliente(models.Model):
-    usuario = models.ForeignKey(User, on_delete=models.CASCADE, related_name="Cliente", null=True)
-    imagem = models.ImageField(upload_to="clientes", default="cat-img.png")
-    nome = models.CharField(max_length=250, default="Genérica")
+class User(AbstractUser):
+    class Role(models.TextChoices):
+        ADMIN = "ADMIN", 'Admin'
+        FUNCIONARIO = "FUNCIONARIO", 'Funcionário'
+        CLIENTE = "CLIENTE", 'Client'
 
-    def __str__(self):
-        return self.nome
+    base_role = Role.ADMIN
+    role = models.CharField(max_length=50, choices=Role.choices)
+
+    def save(self, *args, **kwargs):
+        if not self.pk:
+            self.role = self.base_role
+            return super().save(*args, **kwargs)
+
+
+class FuncionarioManager(BaseUserManager):
+    def get_queryset(self, *args, **kwargs):
+        results = super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Role.FUNCIONARIO)
+
+
+class Funcionario(User):
+    base_role = User.Role.FUNCIONARIO
+
+    funcionario = FuncionarioManager()
+
+    class Meta:
+        proxy = True
+
+
+class ClienteManager(BaseUserManager):
+    def get_queryset(self, *args, **kwargs):
+        results = super().get_queryset(*args, **kwargs)
+        return results.filter(role=User.Role.CLIENTE)
+
+
+class Cliente(User):
+    base_role = User.Role.CLIENTE
+
+    cliente = ClienteManager()
+
+    class Meta:
+        proxy = True
 
 
 class Categoria(models.Model):
