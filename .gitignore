@@ -4,3 +4,4 @@ django_faculdade_site/apps/cad_roupas/migrations
 db.sqlite3
 *.sqlite3
 **/__pycache__/
+**\__pycahce__\
