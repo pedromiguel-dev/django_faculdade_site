@@ -21,7 +21,6 @@ def add_user(req):
         funcionarios = Funcionario.objects.all()
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
             user.save()
             messages.success(req, 'You have singed up successfully.')
             return redirect('/')

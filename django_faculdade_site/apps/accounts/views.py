@@ -1,5 +1,6 @@
 import locale
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -17,7 +18,6 @@ def sign_up(req):
         form = RegisterForm(req.POST)
         if form.is_valid():
             user = form.save(commit=False)
-            user.username = user.username.lower()
             user.save()
             messages.success(req, 'You have singed up successfully.')
             login(req, user)
@@ -32,12 +32,13 @@ def sign_in(req):
         return render(req, 'registration/login.html', {'form': form})
 
 
+@login_required(login_url="/accounts/login/")
 def edit_roupa(req, id_roupa):
     if req.method == 'GET':
         roupa_instance = Roupa.objects.get(pk=id_roupa)
         roupas_rel = Roupa.objects.select_related().filter(categoria=roupa_instance.categoria)
 
-        form = EditRoupa()
+        form = EditRoupa(instance=roupa_instance)
         return render(
             request=req,
             template_name="roupa/roupa_edit.html",
@@ -60,6 +61,7 @@ def edit_roupa(req, id_roupa):
             return render(req, 'roupa/roupa_edit.html', {'form': form})
 
 
+@login_required(login_url="/accounts/login/")
 def rem_roupa(req, id_roupa):
     if req.method == 'GET':
         try:
@@ -71,6 +73,7 @@ def rem_roupa(req, id_roupa):
         return HttpResponseRedirect("/")
 
 
+@login_required(login_url="/accounts/login/")
 def register_roupa(req):
     if req.method == "POST":
         form = RegisterRoupa(req.POST, req.FILES)
@@ -78,15 +81,16 @@ def register_roupa(req):
             form.save()
         else:
             messages.error(req, 'Error saving form')
-            print(form)
 
-        return redirect("/")
+        return redirect("/accounts/funcionario/")
 
     if req.method == 'GET':
         form = RegisterRoupa()
-        return render(req, 'funcionario/funcionario.html', {'form': form})
+        roupas = Roupa.objects.all()
+        return render(req, 'funcionario/funcionario.html', {'form': form, 'roupas': roupas})
 
 
+@login_required(login_url="/accounts/login/")
 def register_categoria(req):
     if req.method == "POST":
         form = RegisterCategoria(req.POST, req.FILES)

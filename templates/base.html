@@ -51,7 +51,7 @@
                     class="bi bi-person-add" style="color: black;"></i></a>
               {% endif %}
                 {% if user.role == 'FUNCIONARIO' %}
-                  <a class="btn btn-secondary gear " role="button" aria-disabled="true" href="{% url 'perfil' %}"><i
+                  <a class="btn btn-secondary gear " role="button" aria-disabled="true" href="{% url 'funcionario' %}"><i
                     class="bi bi-gear" style="color: black;"></i></a>
                 {% endif %}
             {% if user.is_authenticated %}

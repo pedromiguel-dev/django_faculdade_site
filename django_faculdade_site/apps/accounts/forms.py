@@ -20,13 +20,13 @@ class LoginForm(AuthenticationForm):
 class RegisterRoupa(forms.ModelForm):
     class Meta:
         model = Roupa
-        fields = ['nome', 'descricao', 'valor', 'precoLavagem', 'categoria', 'imagem']
+        fields = ['nome', 'descricao', 'valor', 'precoLavagem', 'categoria', 'imagem', 'quantidade']
 
 
 class EditRoupa(forms.ModelForm):
     class Meta:
         model = Roupa
-        fields = ['nome', 'descricao', 'valor', 'precoLavagem', 'categoria', 'imagem']
+        fields = ['nome', 'descricao', 'valor', 'precoLavagem', 'categoria', 'imagem', 'quantidade']
 
 
 class RegisterCategoria(forms.ModelForm):

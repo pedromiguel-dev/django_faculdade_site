@@ -9,7 +9,7 @@
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-xl-8">
         <a href="{% url 'categoria_admin' %}" class="btn btn-success" style="margin-left: 80%; margin-bottom: 10px">Nova Categoria</a>
-        <div class="card rounded-3 text-black">
+        <div class="card rounded-3 text-black mb-4">
           <div class="row g-0">
             <div class="">
               <div class="card-body p-md-5 mx-md-4">
@@ -26,13 +26,39 @@
                         </div>
                     {% endfor %}
                   <div class="pb-4 gap-3">
-                    <button type="submit" class="btn btn-outline-danger w-100">Criar nova conta</button>
+                    <button type="submit" class="btn btn-outline-danger w-100">Add roupa</button>
                   </div>
                 </form>
               </div>
             </div>
+
           </div>
         </div>
+        <table class="table table-bordered">
+          <H1>Estoque</H1>
+          <thead>
+            <tr>
+              <th scope="col">id</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Categoria</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Qnt.</th>
+                <th scope="col">#</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for roupa in roupas %}
+              <tr>
+                  <th scope="row">{{ roupa.id }}</th>
+                  <td>{{ roupa.nome }}</td>
+                  <td>{{ roupa.categoria }}</td>
+                  <td>{{ roupa.valor }}</td>
+                  <td>{{ roupa.quantidade }}</td>
+                    <td><a href="{% url 'edit_roupa' roupa.id %}" class="btn btn-danger w-100 border-0 py-3">Editar Roupa</a></td>
+              </tr>
+          {% endfor %}
+          </tbody>
+        </table>
       </div>
     </div>
   </div>

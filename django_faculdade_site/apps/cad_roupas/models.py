@@ -70,6 +70,7 @@ class Roupa(models.Model):
         Categoria, on_delete=models.CASCADE, related_name="categoria"
     )
     imagem = models.ImageField(upload_to="images")
+    quantidade = models.IntegerField(default=10)
 
     def __str__(self):
         return self.nome
