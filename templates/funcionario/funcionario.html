@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Funcionário{% endblock %}
+{% block content %}
+
+
+<section class>
+  <div class="container py-5 h-70">
+    <div class="row d-flex justify-content-center align-items-center">
+      <div class="col-xl-8">
+        <a href="{% url 'categoria_admin' %}" class="btn btn-success" style="margin-left: 80%; margin-bottom: 10px">Nova Categoria</a>
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-10">
+                
+              <div class="card-body p-md-5 mx-md-4">
+                
+                <H1>Cadastre uma roupa</H1>
+                
+                <form method="post" enctype="multipart/form-data">
+                  {% csrf_token %}
+                    {% for field in form %}
+                        <div class="form-group mb-3">
+                            <label class="form-label">
+                                {{ field.label_tag }}
+                            </label>
+                            {{ field.erros }}
+                            {% render_field field class="form-control" %}
+                        </div>
+                    {% endfor %}
+                  <div class="pb-4 gap-3">
+                    <button type="submit" class="btn btn-outline-danger w-100">Criar nova conta</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
