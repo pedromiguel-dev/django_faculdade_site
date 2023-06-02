@@ -25,33 +25,6 @@
             </form>
         </div>
     </div>
-
-{% comment %}  <div class=" border p-3 main-section bg-white border-0">
-    <div class=" m-0">
-      <div class=" align-items-center">
-        <div class="border p-3 m-0 border-0">
-          <H1>Cadastre funcionários</H1>
-            <form method="post" novalidate action="{% url 'add_user' %}" enctype="multipart/form-data">
-              {% csrf_token %}
-                {% for field in form %}
-                    <div class="form-group mb-3">
-                        <label class="form-label">
-                            {{ field.label_tag }}
-                        </label>
-                        {{ field.errors }}
-
-                        {% render_field field class="form-control" %}
-                    </div>
-                {% endfor %}
-                {{ form.non_field_errors  }}
-              <div class="pb-4 gap-3">
-                <button type="submit" class="btn btn-outline-danger w-100">Adicionar novo funcionario</button>
-              </div>
-            </form>
-        </div>
-      </div>
-    </div>
-  </div>{% endcomment %}
 </main>
 <section class="container-fluid p-3 py-5">
   <div class="container-fluid d-inline-flex justify-content-between align-items-center py-5">
