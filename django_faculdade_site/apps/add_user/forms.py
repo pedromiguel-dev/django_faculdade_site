@@ -1,8 +1,10 @@
+from django.contrib.auth.forms import UserCreationForm
+
 from django_faculdade_site.apps.cad_roupas.models import Funcionario
 from django import forms
 
 
-class AddUserForm(forms.ModelForm):
+class AddUserForm(UserCreationForm):
     class Meta:
         model = Funcionario
         attrs = {'class': 'form-control'}

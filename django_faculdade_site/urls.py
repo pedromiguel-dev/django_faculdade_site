@@ -19,7 +19,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
 
-from django_faculdade_site.apps.add_user.views import add_user
+from django_faculdade_site.apps.add_user.views import add_user, rem_user
 from django_faculdade_site.apps.home.views import home
 from django_faculdade_site.apps.roupa.views import roupa
 from django_faculdade_site.apps.categoria.views import categoria, categorias_cards
@@ -27,10 +27,11 @@ from django_faculdade_site.apps.entrega.views import agradecimento
 from django_faculdade_site.apps.perfil.views import perfil
 
 urlpatterns = [
-    path(route="add_user/", view=admin.site.urls),
+    path(route="admin/", view=admin.site.urls),
     path(route="accounts/", view=include("django.contrib.auth.urls")),
     path(route="accounts/profile/", view=perfil, name="perfil"),
     path(route="accounts/add_user/", view=add_user, name="add_user"),
+    path(route="accounts/rem_user/<id_user>/", view=rem_user, name="rem_user"),
     path(route="accounts/", view=include("django_faculdade_site.apps.accounts.urls")),
     path(route="carrinho/", view=include("django_faculdade_site.apps.carrinho.urls")),
     path(route="entrega/", view=include("django_faculdade_site.apps.entrega.urls")),
