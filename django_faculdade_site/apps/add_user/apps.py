@@ -3,4 +3,4 @@ from django.apps import AppConfig
 
 class AdminConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'django_faculdade_site.apps.admin'
+    name = 'django_faculdade_site.apps.add_user'

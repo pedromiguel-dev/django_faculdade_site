@@ -47,7 +47,7 @@
               {% if user.role == 'ADMIN' %}
                   <a class="btn btn-secondary gear " role="button" aria-disabled="true" href="{% url 'perfil' %}"><i
                     class="bi bi-gear" style="color: black;"></i></a>
-                  <a class="btn btn-secondary add_user " role="button" aria-disabled="true" href="{% url 'perfil' %}"><i
+                  <a class="btn btn-secondary add_user " role="button" aria-disabled="true" href="{% url 'add_user' %}"><i
                     class="bi bi-person-add" style="color: black;"></i></a>
               {% endif %}
             {% if user.is_authenticated %}
