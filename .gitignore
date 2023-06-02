@@ -3,4 +3,4 @@ django_faculdade_site/.env
 django_faculdade_site/apps/cad_roupas/migrations
 db.sqlite3
 *.sqlite3
-**\__pycahce\
+**\__pycahce__\
