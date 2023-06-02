@@ -9,21 +9,12 @@ from django_faculdade_site.apps.cad_roupas.models import User
 
 @login_required(login_url="/accounts/login/")
 def add_user(req):
-    if req.user.role != User.Role.ADMIN:
-        return HttpResponseRedirect("/")
-
-    perfil_user_email = req.user.email
-    perfil_user_name = User.get_username(req.user)
-    user_role = req.user.role
+    add_user_form = AddUserForm()
 
     return render(
         request=req,
         template_name="perfil/perfil.html",
         context={
-            "email": perfil_user_email,
-            "name": perfil_user_name,
-            "image": "cat-img.png",
-            "pedidos_pagos": [],
-            "role": user_role
+            "form": add_user_form
         }
     )
