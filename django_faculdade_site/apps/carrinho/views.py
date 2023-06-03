@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 # Create your views here.
 
@@ -51,6 +51,14 @@ def carrinho_cards(req):
 @login_required(login_url="/accounts/login/")
 def carrinho_add(req, id_roupa):
     roupa = Roupa.objects.get(pk=id_roupa)
+
+    if roupa.quantidade > 0:
+        roupa.quantidade = roupa.quantidade - 1
+    else:
+        return render(req, "roupa/roupa.html", {"roupa": roupa})
+
+    roupa.save()
+
     tamanho = req.GET.get("tamanho")
     usuario = req.user
     carrinho_instance, _ = Carrinho.objects.get_or_create(usuario=usuario, pago=False)
