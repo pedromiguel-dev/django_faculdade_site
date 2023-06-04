@@ -2,9 +2,12 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 
+from django_faculdade_site.apps.carrinho.models import Carrinho, CarrinhoItem
+from django_faculdade_site.apps.roupa.models import Roupa
+
+
 # Create your views here.
 
-from django_faculdade_site.apps.cad_roupas.models import Carrinho, CarrinhoItem, Roupa
 
 
 @login_required(login_url="/accounts/login/")

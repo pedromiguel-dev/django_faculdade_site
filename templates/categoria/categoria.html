@@ -21,7 +21,7 @@
                     <p class="card-text">{{ roupa.descricao }}</p>
                 </div>
                 <div class="card-footer">
-                     <a href="/produto/{{roupa.id}}" class="btn btn btn btn-danger w-100">Ver mais</a>
+                     <a href="{% url 'roupa' roupa.id %}" class="btn btn btn btn-danger w-100">Ver mais</a>
                 </div>
             </div>
             {% endfor %}

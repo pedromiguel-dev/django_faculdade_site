@@ -6,7 +6,7 @@
             <H1>Cadastre funcionários</H1>
         </div>
       <div class="card-body">
-            <form method="post" novalidate action="{% url 'add_user' %}" enctype="multipart/form-data">
+            <form method="post" novalidate action="{% url 'add_funcionario' %}" enctype="multipart/form-data">
               {% csrf_token %}
                 {% for field in form %}
                     <div class="form-group mb-3">
@@ -51,7 +51,7 @@
              </ul>
               <div class="card-footer d-flex gap-1">
                   <a href="whatsapp://send?text=Hello World!&phone=+5585992116661" class="btn btn-success w-100">Ver mais</a>
-                  <a href="{% url 'rem_user' funcionario.pk %}" class="btn btn-danger w-100">Deletar <i class="bi bi-trash"></i></a>
+                  <a href="{% url 'rem_funcionario' funcionario.pk %}" class="btn btn-danger w-100">Deletar <i class="bi bi-trash"></i></a>
               </div>
           </div>
       {% endfor %}
