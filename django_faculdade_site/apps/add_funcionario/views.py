@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
-from django_faculdade_site.apps.add_user.forms import AddUserForm
+from django_faculdade_site.apps.add_funcionario.forms import AddUserForm
 from django.contrib import messages
 
-from django_faculdade_site.apps.cad_roupas.models import Funcionario
+from django_faculdade_site.apps.add_funcionario.models import Funcionario
 
 
 # Create your views here.
@@ -35,4 +35,4 @@ def rem_user(req, id_user):
     except Exception as error:
         print(error)
 
-    return HttpResponseRedirect(f"/accounts/add_user/")
+    return HttpResponseRedirect("/adm/add_funcionario/")

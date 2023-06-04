@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from django_faculdade_site.apps.cad_roupas.models import Pedido, User
+from django_faculdade_site.apps.accounts.models import User
+from django_faculdade_site.apps.carrinho.models import Pedido
 
 
 # Create your views here.

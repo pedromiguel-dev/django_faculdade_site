@@ -1,7 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, HttpResponseServerError
 from django.shortcuts import render
-from django_faculdade_site.apps.cad_roupas.models import Carrinho, CarrinhoItem, Pedido
+
+from django_faculdade_site.apps.carrinho.models import Carrinho, CarrinhoItem, Pedido
 
 
 # Create your views here.
@@ -12,7 +13,7 @@ def entrega(req):
         template_name="entrega/entrega.html",
     )
 
-
+@login_required(login_url="/accounts/login/")
 def entrega_info(req):
     carrinho_instance, _ = Carrinho.objects.get_or_create(usuario=req.user, pago=False )
     carrinho_itens = CarrinhoItem.objects.filter(carrinho=carrinho_instance)

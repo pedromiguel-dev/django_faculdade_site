@@ -1,6 +1,7 @@
 from django.shortcuts import render
 
-from django_faculdade_site.apps.cad_roupas.models import Categoria, Roupa
+from django_faculdade_site.apps.categoria.models import Categoria
+from django_faculdade_site.apps.roupa.models import Roupa
 
 
 # Create your views here.

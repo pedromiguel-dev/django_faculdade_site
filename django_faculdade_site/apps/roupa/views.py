@@ -2,7 +2,7 @@ import locale
 
 from django.shortcuts import render
 
-from django_faculdade_site.apps.cad_roupas.models import Roupa
+from django_faculdade_site.apps.roupa.models import Roupa
 
 locale.setlocale(locale.LC_ALL, "")
 
